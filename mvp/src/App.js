@@ -1,32 +1,45 @@
 // import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 import DriverStandings from './DriverStandings.js';
 import ConstructorStandings from './ConstructorStandings.js';
+import CurrentDrivers from './CurrentDrivers.js';
 
-function App() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <h1 className='heading'>Formula 1 For Casuals</h1>
-      <div className='standings'>
-        <DriverStandings/>
-        <ConstructorStandings />
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      year: 2021,
+      yearsAvailable: [2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010]
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      year: event.target.value
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+
+        <h1 className='heading'>Formula 1 For Casuals</h1>
+        <div className='standings'>
+          <DriverStandings/>
+          <ConstructorStandings />
+        </div>
+
+        <div className='current-drivers'>
+          <CurrentDrivers />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
