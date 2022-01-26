@@ -4,6 +4,7 @@ import React from 'react';
 import DriverStandings from './DriverStandings.js';
 import ConstructorStandings from './ConstructorStandings.js';
 import CurrentDrivers from './CurrentDrivers.js';
+import RaceResults from './RaceResults.js';
 
 
 class App extends React.Component {
@@ -36,6 +37,10 @@ class App extends React.Component {
 
         <div className='current-drivers'>
           <CurrentDrivers />
+        </div>
+
+        <div className='race-results'>
+          <RaceResults />
         </div>
       </div>
     );
