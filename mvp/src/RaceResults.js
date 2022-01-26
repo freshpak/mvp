@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import Card from './RaceResultCard.js';
+import { Grid } from '@mui/material';
+
 
 class RaceResults extends React.Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class RaceResults extends React.Component {
       localities: [],
       countries: []
     }
+
   }
 
   async componentDidMount() {
@@ -44,11 +48,20 @@ class RaceResults extends React.Component {
     })
   }
 
+
   render() {
     return (
-      <div>
+        <Grid container spacing={4} justifyContent='center'>
 
-      </div>
+          {this.state.raceName.map((race, index) => (
+            <Grid item xs={12} sm={6} md={4}>
+              <Card key={index} order={index} race={this.state.raceName[index]} winner={this.state.winners[index]}
+              circuit={this.state.circuits[index]} locality={this.state.localities[index]}
+              country={this.state.countries[index]}
+              />
+            </Grid>
+          ))}
+        </Grid>
     );
   }
 }
